@@ -3,14 +3,14 @@
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://kit.fontawesome.com/914f58546c.js" crossorigin="anonymous"></script>
-	<title>Booking (*_*) </title>
+	<title>Booking | Admin </title>
 </head>
 <body style="background: rgb(255, 194, 195);">
 	<nav class="navbar navbar-dark" style="background:rgb(232, 0, 0);">
 		<div class="container">
 			<a class="navbar-brand"><i class="fas fa-comment-dollar mr-3"></i>Booking</a>
 			<ul class="nav navbar-nav navbar-right">
-				<li style="font-weight: bold;"><a href="#">admin</a></li>
+				<li style="font-weight: bold;"><a style = "pointer-events: none; cursor : default;" href="#">Administrator</a></li>
 			</ul>
 		</div>	
 	</nav>
