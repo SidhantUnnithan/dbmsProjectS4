@@ -31,65 +31,31 @@
               
             <label class="my-1 mr-2" for="inlineFormCustomSelectPref">movie</label>
   			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="movie">
-  			  <option selected>Choose...</option>
-  			  <option value="STAR WARS THE CLONE WARS">star wars : the clone wars</option>
-  			  <option value="ZOMBIELAND DOUBLE TAP">zombie land: double tap</option>
-  			  <option value="1917">1917</option>
-  			  <option value="JOKER">jocker</option>
+  			  <option selected>Select a Movie</option>
+  			  <option value="Parasite" <?= $_GET['movie'] == "Parasite" ? "selected = selected" : ""; ?>>Parasite</option>
+  			  <option value="ZombieLand Double Tap" <?= $_GET['movie'] == "Zombie" ? "selected = selected" : ""; ?>>ZombieLand 2 : Double Tap</option>
+  			  <option value="1917" <?= $_GET['movie'] == "1917" ? "selected = selected" : ""; ?>>1917</option>
+  			  <option value="Joker" <?= $_GET['movie'] == "Joker" ? "selected = selected" : ""; ?>>Joker</option>
   			</select>
               
-  			<div class="col-lg-6">
-  				<label class="my-1 mr-2" for="inlineFormCustomSelectPref">No of Tickets</label>
-  				<br>
-  					<input type="number" class="form-control" min="1" max="10" name="NoT">
-  				</br>
-  			</div>	
+  	
+			<label class="my-1 mr-2" for="inlineFormCustomSelectPref">No of Tickets</label>
+			<br>
+				<input type="number" class="form-control" min="1" max="10" name="NoT">
+			</br>
+  		
+
+			<div style="margin-top: 20px;">
+ 				<input type="submit" class="btn btn-primary" value="Submit">			
+ 			</div> 
   			</div>
   			</div>
 
-  			<div style="margin-top: 20px;">
- 				<input type="submit" class="btn btn-primary" value="Submit">			
- 			</div> 
+  			
 		</form>
 
 		<?php
-			$servername = "localhost";
-			$username = "root";
-			$password = "password";
-			$dbname = "dbms";
-
-			// Create connection
-			$conn = new mysqli($servername, $username, $password, $dbname);
-			// Check connection
-			if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-			}
-
-			$fname = $_GET["f_name"];
-			$lname = $_GET["l_name"];
-			$email = $_GET["email_id"];
-			$movie = $_GET["movie"];
-			$NoT = $_GET["NoT"];
 			
-			$sql = "SELECT movie_id FROM movie WHERE movie_name='$movie'";
-        	$result = $conn->query($sql);
-
-        	if ($result->num_rows > 0) {
-            	// output data of each row
-            	while($row = $result->fetch_assoc()) {                
-                	$movie_id = $row["movie_id"];
-            	}
-        	}
-			
-			$sql = "INSERT ignore into customer VALUES ('$fname', '$lname', '$email', $movie_id, $NoT)";
-
-			if (mysqli_query($conn, $sql)) {
-				echo "New record created successfully";
-			} else {
-				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			}
-			
-			$conn->close();
     	?> 
 	</div>	
 
