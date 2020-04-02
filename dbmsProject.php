@@ -32,7 +32,7 @@
             <label class="my-1 mr-2" for="inlineFormCustomSelectPref">movie</label>
   			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="movie">
   			  <option selected>Choose...</option>
-  			  <option value="STAR WARS THE CLONE WARS">star wars : the clone wars</option>
+  			  <option value="PARASITE">parasite</option>
   			  <option value="ZOMBIELAND DOUBLE TAP">zombie land: double tap</option>
   			  <option value="1917">1917</option>
   			  <option value="JOKER">jocker</option>
@@ -44,8 +44,6 @@
   					<input type="number" class="form-control" min="1" max="10" name="NoT">
   				</br>
   			</div>	
-  			</div>
-  			</div>
 
   			<div style="margin-top: 20px;">
  				<input type="submit" class="btn btn-primary" value="Submit">			
@@ -81,7 +79,7 @@
             	}
         	}
 			
-			$sql = "INSERT ignore into customer VALUES ('$fname', '$lname', '$email', $movie_id, $NoT)";
+			$sql = "INSERT ignore into customer VALUES ('$fname', '$lname', '$email', '$movie_id', '$NoT')";
 
 			if (mysqli_query($conn, $sql)) {
 				echo "New record created successfully";
