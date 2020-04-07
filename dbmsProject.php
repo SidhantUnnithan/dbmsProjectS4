@@ -1,9 +1,7 @@
 <?php
 
-$servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "dbms";
 
 ?>
 
@@ -65,6 +63,8 @@ $dbname = "dbms";
 
 	<?php
 
+	$dbname = "dbms";
+	$servername = "localhost";
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
