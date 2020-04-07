@@ -56,7 +56,7 @@
 		<?php
 			$servername = "localhost";
 			$username = "root";
-			$password = "password";
+			$password = "";
 			$dbname = "dbms";
 
 			// Create connection
