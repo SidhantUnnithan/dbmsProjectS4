@@ -32,12 +32,11 @@
             <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Movie</label>
   			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="movie">
   			  <option selected>Select a Movie</option>
-  			  <option value="Parasite" <?= $_GET['movie'] == "Parasite" ? "selected = selected" : ""; ?>>Parasite</option>
-  			  <option value="ZombieLand Double Tap" <?= $_GET['movie'] == "Zombie" ? "selected = selected" : ""; ?>>ZombieLand 2 : Double Tap</option>
+  			  <option value="PARASITE" <?= $_GET['movie'] == "Parasite" ? "selected = selected" : ""; ?>>Parasite</option>
+  			  <option value="ZOMBIELAND DOUBLE TAP" <?= $_GET['movie'] == "Zombie" ? "selected = selected" : ""; ?>>ZombieLand 2 : Double Tap</option>
   			  <option value="1917" <?= $_GET['movie'] == "1917" ? "selected = selected" : ""; ?>>1917</option>
-  			  <option value="Joker" <?= $_GET['movie'] == "Joker" ? "selected = selected" : ""; ?>>Joker</option>
-  			</select>
-              
+  			  <option value="JOKER" <?= $_GET['movie'] == "Joker" ? "selected = selected" : ""; ?>>Joker</option>
+			</select>              
   	
 			<label class="my-1 mr-2" for="inlineFormCustomSelectPref">No of Tickets</label>
 			<br>
@@ -55,6 +54,41 @@
 		</form>
 
 		<?php
+			$servername = "localhost";
+			$username = "root";
+			$password = "password";
+			$dbname = "dbms";
+
+			// Create connection
+			$conn = new mysqli($servername, $username, $password, $dbname);
+			// Check connection
+			if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+			}
+
+			$fname = $_GET["f_name"];
+			$lname = $_GET["l_name"];
+			$email = $_GET["email_id"];
+			$movie = $_GET["movie"];
+			$NoT = $_GET["NoT"];
+			
+			$sql = "SELECT movie_id FROM movie WHERE movie_name='$movie'";
+        	$result = $conn->query($sql);
+
+        	if ($result->num_rows > 0) {
+            	// output data of each row
+            	while($row = $result->fetch_assoc()) {                
+                	$movie_id = $row["movie_id"];
+            	}
+        	}
+			
+			$sql = "INSERT ignore into customer VALUES ('$fname', '$lname', '$email', '$movie_id', '$NoT')";
+
+			if (mysqli_query($conn, $sql)) {
+				echo "New record created successfully";
+			} else {
+				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+			}
 			
     	?> 
 	</div>	
