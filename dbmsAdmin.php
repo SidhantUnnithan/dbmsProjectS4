@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php
+$username = "root";
+$password = "";
+?>
 <html>
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -17,63 +22,56 @@
 	</nav>
 
 	<div class = "container" style="margin-top: 30px">
-		<table class="table table-striped">
-		    <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Movie</th>
-                <th scope="col">No of Tickets</th>
-                <th scope="col">Time</th>
+        <?php
 
-                </tr>
-            </thead>
-            <tbody>
-                <script language="PHP">
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "password";
-                    $dbname = "dbms";
-                    
-                    if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
-                        echo 'We don\'t have mysqli!!!';
-                    } else {
-                        echo 'Phew we have it!<br>';
-                    }                
-                    $conn = new mysqli($servername, $username, $password, $dbname);
+            $servername = "localhost";
+            $dbname = "dbms";
+            
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            
+            // SQL Query
+            $sql = 'SELECT * FROM customer';
+
+            if($result = $conn->query($sql)){
+
+                // Defining the table
+
+                echo '<table class="table table-striped sortable">';
+                echo '<tr>';
+                echo '<th scope="col">#</th>';
+                echo '<th scope="col">First name</th>';
+                echo '<th scope="col">Last name</th>';
+                echo '<th scope="col">Email</th>';
+                echo '<th scope="col">Movie</th>';
+                echo '<th scope="col">No of Tickets</th>';
+                echo '</tr>';
                 
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
+                // Echo the data
 
-                    $sql = "SELECT f_name, l_name, email_id, movie_id, no_of_tickets FROM customer";
-	                $result = $conn->query($sql);
-                    
-                    $n = 1;
-                    if ($result->num_rows > 0) {
-                    // output data of each row
-                        while($row = $result->fetch_assoc()) {
-                                <tr>
-                                    <th scope="row"><?php echo($n) ?></th>
-                                        <td><?php echo($row["f_name"]) ?></td>
-                                        <td><?php echo($row["l_name"]) ?></td>
-                                        <td><?php echo($row["email_id"]) ?></td>
-                                        <td><?php echo($row["movie_id"]) ?></td>
-                                        <td><?php echo($row["no_of_tickets"]) ?></td>
-                                        <td>21:30</td>
-                                </tr>
-                            $n = $n + 1;
-                        }
-                    } else {
-                        echo "0 results";
-                    }
-                    $conn->close();
-                </script>                   
-                    
-            </tbody>    
-		</table>
+                echo '<tbody>';
+                $num = 1;
+                while($row = $result->fetch_assoc()){
+                    $statem = '<tr><td>' . $num . '</td><td>' . $row["f_name"] . '</td><td>' . $row['l_name'] . '</td><td>' . $row['email'] . '</td><td>' . $row['movie_id'] . '</td><td>' . $row['no_tickets'] . '</td></tr>';
+                    echo $statem;
+                    $num += 1;
+                }
+
+                echo '</tbody>';
+
+                $result->free();
+            }                   
+
+            $conn->close();
+
+            echo '</table>';
+
+
+        ?>               
 	</div>
 
 </body>
