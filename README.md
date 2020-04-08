@@ -32,3 +32,4 @@ $password = "password";
 - Sidhant Unnithan - 89, CSE B
 - Thomas Jose - 94,CSE B
 - Sreeraj P Rajeendran - 92, CSE B
+- Jishnu Jagadeesh P I - 109, CSE B
