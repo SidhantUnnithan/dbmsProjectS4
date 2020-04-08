@@ -1,3 +1,11 @@
+<?php
+
+$username = "root";
+$password = "";
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +21,27 @@
 	<nav class="navbar navbar-dark" style="background:rgb(232, 0, 0);">
 		<div class="container">
 			<a class="navbar-brand"><i class="fas fa-comment-dollar mr-3"></i>Booking</a>
-		</div>	
+			<ul class="nav navbar-nav navbar-right">
+				
+				<form method = "post" action = "dbmsAdmin.php">
+					<div class = "row">
+						<div class = "col">
+							<input type = "password" name = "pass" class = "form-control" placeholder="Enter Password"/>
+						</div>
+						<div class = "col">
+							<input type = "submit" name = "adminButton" value = "Admin Page" class="btn btn-primary"/>
+						</div>
+					</div>
+				</form>
+				
+			</ul>
+		</div>
 	</nav>
 
 	<section id="header" class="jumbotron text-center" style="background: url(https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260) center center/cover no-repeat;">
 		<h1 class="display-3">Book Your Tickets Now!</h1>
 		<p><strong>50% off form Dec 20 - Jan 1</strong></p>
-		<a href="dbmsAdmin.php" class="btn btn-primary">admin</a>
+
 	</section>	
 
 	<section id="movies">

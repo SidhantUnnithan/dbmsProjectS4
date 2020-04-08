@@ -41,11 +41,10 @@ $password = "";
 
 			<label class="my-1 mr-2" for="inlineFormCustomSelectPref">Movie</label>
 			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="movie">
-				<option selected>Select a Movie</option>
-				<option value="PARASITE" <?= $_GET['movie'] == "Parasite" ? "selected = selected" : ""; ?>>Parasite</option>
-				<option value="ZOMBIELAND DOUBLE TAP" <?= $_GET['movie'] == "Zombie" ? "selected = selected" : ""; ?>>ZombieLand 2 : Double Tap</option>
+				<option value="Parasite" <?= $_GET['movie'] == "Parasite" ? "selected = selected" : ""; ?>>Parasite</option>
+				<option value="Zombie" <?= $_GET['movie'] == "Zombie" ? "selected = selected" : ""; ?>>ZombieLand 2 : Double Tap</option>
 				<option value="1917" <?= $_GET['movie'] == "1917" ? "selected = selected" : ""; ?>>1917</option>
-				<option value="JOKER" <?= $_GET['movie'] == "Joker" ? "selected = selected" : ""; ?>>Joker</option>
+				<option value="Joker" <?= $_GET['movie'] == "Joker" ? "selected = selected" : ""; ?>>Joker</option>
 			</select>
 
 			<label class="my-1 mr-2" for="inlineFormCustomSelectPref">No of Tickets</label>
@@ -90,10 +89,14 @@ $password = "";
 			}
 		}
 
-		$sql = "INSERT ignore into customer VALUES ('$fname', '$lname', '$email', '$movie_id', '$NoT')";
+		echo '<script> console.log("' . $movie_id . '"); </script>';
+
+		$sql = "INSERT ignore into customer VALUES ('$fname', '$lname', '$email', '$movie_id', '$NoT', NOW())";
 
 		if (mysqli_query($conn, $sql)) {
 			echo '<script>';
+			$logging = 'console.log("' . $sql . "<br>" . mysqli_error($conn).'");';
+			echo $logging;
 			echo 'alert("Tickets booked successfully!");';
 			echo 'window.location.href="dbmsThankYou.html";';
 			echo '</script>';
