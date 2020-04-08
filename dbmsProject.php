@@ -26,17 +26,17 @@ $password = "";
 		<form action="dbmsProject.php" method="get">
 			<div class="row">
 				<div class="col">
-					<input type="text" class="form-control" placeholder="First name" name="f_name">
+					<input type="text" class="form-control" placeholder="First name" name="f_name" required>
 				</div>
 
 				<div class="col">
-					<input type="text" class="form-control" placeholder="Last name" name="l_name">
+					<input type="text" class="form-control" placeholder="Last name" name="l_name" required>
 				</div>
 			</div>
 
 			<label class="my-2 mr-2" for="inlineFormCustomSelectPref">Email</label>
 			<br>
-			<input type="email" class="form-control" name="email_id" placeholder="example@example.com">
+			<input type="email" class="form-control" name="email_id" placeholder="example@example.com" required>
 			</br>
 
 			<label class="my-1 mr-2" for="inlineFormCustomSelectPref">Movie</label>
@@ -49,7 +49,7 @@ $password = "";
 
 			<label class="my-1 mr-2" for="inlineFormCustomSelectPref">No of Tickets</label>
 			<br>
-			<input type="number" class="form-control" min="1" max="10" name="NoT">
+			<input type="number" class="form-control" min="1" max="10" name="NoT" required>
 			</br>
 
 
